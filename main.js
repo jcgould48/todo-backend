@@ -12,15 +12,29 @@ They'll also become easier later once you've written a few of the iteration func
 
 */
 
-const map = function() {
+const map = function(todos, func) {
+  let newArr = [];
+  
+  todos.forEach(todo => newArr.push(func(todo)))
+
+  return newArr;
 
 }
 
-const filter = function() {
+const filter = function(todos, func) {
+  let newArr = [];
 
+  todos.forEach(todo => func(todo) ? newArr.push(todo) : '');
+
+  return newArr;
 }
 
 const twoPileSort = function() {
+  let newArr = [];
+
+  todos.forEach(todo => func(todo) ? newArr.unshift(todo) : newArr.push(todo));
+
+  return newArr;
   
 }
 
@@ -46,8 +60,12 @@ const isComplete = function(todos) {
   return todos.complete;
 }
 
-const isHighPriority = function() {
-  
+const isHighPriority = function(todos) {
+  return todos.priority === 2;
+}
+
+const isLowPriority = function(todos) {
+  return todos.priority === 1;
 }
 
 
@@ -56,12 +74,22 @@ const isHighPriority = function() {
  * ITERATION FUNCTIONS *
  ***********************/
 
-const names = function() {
-
+const names = function(todos) {
+const newArr = [];
+for (const todo of todos){
+  newArr.push(getTodoName(todo));
+}
+return newArr;
 }
 
-const namesAndPriorities = function() {
+const namesAndPriorities = function(todos) {
+  const newArr = [];
+for (const todo of todos){
+  getPriority(todo)===2 ? newArr.push(`${getTodoName(todo)} - High`)
+  :newArr.push(`${getTodoName(todo)} - Low`)
   
+}
+return newArr;
 }
 
 const justNotComplete = function() {
