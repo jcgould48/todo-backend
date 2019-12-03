@@ -30,8 +30,8 @@ const twoPileSort = function() {
  * HELPER FUNCTIONS *
  ********************/
 
-const getTodoName = function() {
-
+const getTodoName = function(todos) {
+return todos.text;
 }
 
 const getCompleteness = function () {
