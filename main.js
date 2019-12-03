@@ -30,6 +30,7 @@ const filter = function(todos, func) {
 }
 
 const twoPileSort = function() {
+  
   let newArr = [];
 
   todos.forEach(todo => func(todo) ? newArr.unshift(todo) : newArr.push(todo));
@@ -64,9 +65,6 @@ const isHighPriority = function(todos) {
   return todos.priority === 2;
 }
 
-const isLowPriority = function(todos) {
-  return todos.priority === 1;
-}
 
 
 
@@ -92,16 +90,16 @@ for (const todo of todos){
 return newArr;
 }
 
-const justNotComplete = function() {
-  
+const justNotComplete = function(todos) {
+  return filter(todos, !isComplete)
 }
 
-const justComplete = function() {
-  
+const justComplete = function(todos) {
+  return filter(todos, isComplete)
 }
 
-const priority2Only = function() {
-  
+const priority2Only = function(todos) {
+  return filter(todos, isHighPriority)
 }
 
 const priority1Only = function() {
