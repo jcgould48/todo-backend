@@ -29,7 +29,7 @@ const filter = function(todos, func) {
   return newArr;
 }
 
-const twoPileSort = function() {
+const twoPileSort = function(todos, func) {
   
   let newArr = [];
 
@@ -61,8 +61,16 @@ const isComplete = function(todos) {
   return todos.complete;
 }
 
+const isNotComplete = function(todos) {
+  return todos.complete=== false;
+}
+
 const isHighPriority = function(todos) {
   return todos.priority === 2;
+}
+
+const isLowPriority = function(todos) {
+  return todos.priority === 1;
 }
 
 
@@ -91,19 +99,19 @@ return newArr;
 }
 
 const justNotComplete = function(todos) {
-  return filter(todos, !isComplete)
+  return filter(todos,isNotComplete);
 }
 
 const justComplete = function(todos) {
-  return filter(todos, isComplete)
+  return filter(todos, isComplete);
 }
 
 const priority2Only = function(todos) {
-  return filter(todos, isHighPriority)
+  return filter(todos, isHighPriority);
 }
 
-const priority1Only = function() {
-  
+const priority1Only = function(todos) {
+  return filter(todos, isLowPriority);
 }
 
 const notCompleteFirst = function() {
