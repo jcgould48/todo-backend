@@ -91,19 +91,20 @@ const names = todos => todos.map((todo) => getTodoName(todo))
 // }
 
 
-// const namesAndPriorities = todos => todos.map((todo) => 
-//   getPriority(todo)===2 ? 
-//   `${getTodoName(todo)} - High`:
-//   `${getTodoName(todo)} - Low`)
-const namesAndPriorities = function(todos) {
-  const newArr = [];
-for (const todo of todos){
-  getPriority(todo)===2 ? newArr.push(`${getTodoName(todo)} - High`)
-  :newArr.push(`${getTodoName(todo)} - Low`)
+const namesAndPriorities = todos => todos.map((todo) => 
+  getPriority(todo)===2 ? 
+  `${getTodoName(todo)} - High`:
+  `${getTodoName(todo)} - Low`)
+
+// const namesAndPriorities = function(todos) {
+//   const newArr = [];
+// for (const todo of todos){
+//   getPriority(todo)===2 ? newArr.push(`${getTodoName(todo)} - High`)
+//   :newArr.push(`${getTodoName(todo)} - Low`)
   
-}
-return newArr;
-}
+// }
+// return newArr;
+// }
 
 
 const justNotComplete = todos => todos.filter((todo)=> isNotComplete(todo))
