@@ -80,14 +80,21 @@ const isLowPriority = function(todos) {
  * ITERATION FUNCTIONS *
  ***********************/
 
-const names = function(todos) {
-const newArr = [];
-for (const todo of todos){
-  newArr.push(getTodoName(todo));
-}
-return newArr;
-}
+const names = todos => todos.map((todo) => getTodoName(todo))
 
+// const names = function(todos) {
+// const newArr = [];
+// for (const todo of todos){
+//   newArr.push(getTodoName(todo));
+// }
+// return newArr;
+// }
+
+
+// const namesAndPriorities = todos => todos.map((todo) => 
+//   getPriority(todo)===2 ? 
+//   `${getTodoName(todo)} - High`:
+//   `${getTodoName(todo)} - Low`)
 const namesAndPriorities = function(todos) {
   const newArr = [];
 for (const todo of todos){
@@ -98,29 +105,37 @@ for (const todo of todos){
 return newArr;
 }
 
-const justNotComplete = function(todos) {
-  return filter(todos,isNotComplete);
-}
 
-const justComplete = function(todos) {
-  return filter(todos, isComplete);
-}
+const justNotComplete = todos => todos.filter((todo)=> isNotComplete(todo))
+// const justNotComplete = function(todos) {
+//   return filter(todos,isNotComplete);
+// }
 
-const priority2Only = function(todos) {
-  return filter(todos, isHighPriority);
-}
 
-const priority1Only = function(todos) {
-  return filter(todos, isLowPriority);
-}
+const justComplete = todos => todos.filter((todo) => isComplete(todo))
+// const justComplete = function(todos) {
+//   return filter(todos, isComplete);
+// }
 
-const notCompleteFirst = function(todos) {
-  return twoPileSort(todos, isNotComplete);
-}
+const priority2Only = todos => todos.filter((todo) => isHighPriority(todo))
+// const priority2Only = function(todos) {
+//   return filter(todos, isHighPriority);
+// }
 
-const priority2First = function(todos) {
-  return twoPileSort(todos,isHighPriority );
-}
+const priority1Only = todos => todos.filter((todo) => isLowPriority(todo))
+// const priority1Only = function(todos) {
+//   return filter(todos, isLowPriority);
+// }
+
+const notCompleteFirst = todos => twoPileSort(todos, (todo) => isNotComplete(todo))
+// const notCompleteFirst = function(todos) {
+//   return twoPileSort(todos, isNotComplete);
+// }
+
+const priority2First = todos => twoPileSort(todos, (todo) => isHighPriority(todo))
+// const priority2First = function(todos) {
+//   return twoPileSort(todos,isHighPriority );
+// }
 
 
 
